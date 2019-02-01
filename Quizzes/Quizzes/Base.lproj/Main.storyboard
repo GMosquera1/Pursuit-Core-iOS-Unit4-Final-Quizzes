@@ -12,7 +12,7 @@
         <!--Search-->
         <scene sceneID="G0s-E5-lmp">
             <objects>
-                <viewController id="DKc-wJ-zvL" sceneMemberID="viewController">
+                <viewController id="DKc-wJ-zvL" customClass="SearchViewController" customModule="Quizzes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lU3-f2-RmN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -72,23 +72,82 @@
         <!--Profile-->
         <scene sceneID="apD-Kd-NM0">
             <objects>
-                <viewController id="HKU-f8-R8n" sceneMemberID="viewController">
+                <viewController id="HKU-f8-R8n" customClass="ProfileViewController" customModule="Quizzes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ta7-z2-UkC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OfR-XE-svl">
+                                <rect key="frame" x="0.0" y="138.5" width="375" height="233.5"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e4C-fg-abU">
+                                        <rect key="frame" x="127.5" y="15" width="120" height="120"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="e4C-fg-abU" secondAttribute="height" multiplier="1:1" id="4si-VU-bDA"/>
+                                            <constraint firstAttribute="height" constant="120" id="IyT-JQ-xSX"/>
+                                            <constraint firstAttribute="width" constant="120" id="KnH-xQ-xg9"/>
+                                        </constraints>
+                                        <state key="normal" title="Button" image="placeholder-image"/>
+                                        <connections>
+                                            <action selector="imageButtonPressed:" destination="HKU-f8-R8n" eventType="touchUpInside" id="dU1-pw-ndT"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7nG-b4-Xwa">
+                                        <rect key="frame" x="164.5" y="168" width="46" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="7nG-b4-Xwa" firstAttribute="top" secondItem="e4C-fg-abU" secondAttribute="bottom" constant="33" id="OQ1-PE-zsa"/>
+                                    <constraint firstItem="e4C-fg-abU" firstAttribute="centerX" secondItem="OfR-XE-svl" secondAttribute="centerX" id="fWX-bu-9rg"/>
+                                    <constraint firstItem="7nG-b4-Xwa" firstAttribute="centerX" secondItem="OfR-XE-svl" secondAttribute="centerX" id="muf-k3-Mlc"/>
+                                    <constraint firstItem="e4C-fg-abU" firstAttribute="top" secondItem="OfR-XE-svl" secondAttribute="top" constant="15" id="xuf-0o-ezw"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EDIT PHOTO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3eL-ub-svc">
+                                <rect key="frame" x="15" y="107.5" width="345" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XUb-SX-anp">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="Profile" id="4Lj-8O-31p"/>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="3eL-ub-svc" firstAttribute="leading" secondItem="ZA6-3Z-6xx" secondAttribute="leading" constant="15" id="09Y-1N-5ym"/>
+                            <constraint firstItem="XUb-SX-anp" firstAttribute="leading" secondItem="ZA6-3Z-6xx" secondAttribute="leading" id="649-Ap-PID"/>
+                            <constraint firstItem="3eL-ub-svc" firstAttribute="centerY" secondItem="ZA6-3Z-6xx" secondAttribute="centerY" multiplier="0.37" id="6BC-BJ-fWo"/>
+                            <constraint firstItem="OfR-XE-svl" firstAttribute="centerY" secondItem="ZA6-3Z-6xx" secondAttribute="centerY" multiplier="0.8" id="6aj-8p-fQZ"/>
+                            <constraint firstItem="OfR-XE-svl" firstAttribute="centerX" secondItem="ZA6-3Z-6xx" secondAttribute="centerX" id="F1I-qJ-WFA"/>
+                            <constraint firstItem="3eL-ub-svc" firstAttribute="centerX" secondItem="ZA6-3Z-6xx" secondAttribute="centerX" id="FKk-dh-09g"/>
+                            <constraint firstItem="OfR-XE-svl" firstAttribute="height" secondItem="Ta7-z2-UkC" secondAttribute="height" multiplier="0.35" id="bi5-G2-euf"/>
+                            <constraint firstItem="XUb-SX-anp" firstAttribute="trailing" secondItem="ZA6-3Z-6xx" secondAttribute="trailing" id="k5x-cn-643"/>
+                            <constraint firstItem="ZA6-3Z-6xx" firstAttribute="trailing" secondItem="3eL-ub-svc" secondAttribute="trailing" constant="15" id="q6c-Cu-LJu"/>
+                            <constraint firstItem="XUb-SX-anp" firstAttribute="top" secondItem="ZA6-3Z-6xx" secondAttribute="top" id="vRd-kj-RKJ"/>
+                            <constraint firstItem="OfR-XE-svl" firstAttribute="width" secondItem="Ta7-z2-UkC" secondAttribute="width" id="zjQ-Yf-8l3"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="ZA6-3Z-6xx"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Profile" image="icons8-account-25" id="uEy-dn-yOG"/>
+                    <connections>
+                        <outlet property="addImageButton" destination="e4C-fg-abU" id="ZH4-Jc-kBx"/>
+                        <outlet property="addNameButton" destination="7nG-b4-Xwa" id="nUv-2H-TKM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Ol-3w-SLB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1188" y="1011"/>
+            <point key="canvasLocation" x="1188" y="1010.6446776611695"/>
         </scene>
         <!--Create-->
         <scene sceneID="BH2-F1-HDF">
             <objects>
-                <viewController id="QVG-Rm-t4L" sceneMemberID="viewController">
+                <viewController id="QVG-Rm-t4L" customClass="CreateViewController" customModule="Quizzes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oPM-ca-QtC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -261,5 +320,6 @@
         <image name="icons8-ask-question-25" width="18.75" height="18.75"/>
         <image name="icons8-create-25" width="18.75" height="18.75"/>
         <image name="icons8-search-filled-24" width="18" height="18"/>
+        <image name="placeholder-image" width="512" height="512"/>
     </resources>
 </document>
