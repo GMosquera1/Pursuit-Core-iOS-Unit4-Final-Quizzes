@@ -13,13 +13,13 @@ final class QuizDataManager {
     
     private static let filename = "NewQuiz.plist"
     
-    static public func fetchNewQuizFromDocumentsDirectory() -> [Quizzes] {
-        var quiz = [Quizzes]()
+    static public func fetchNewQuizFromDocumentsDirectory() -> [QuizCollection] {
+        var quiz = [QuizCollection]()
         let path = DataPersistenceManager.filepathToDocumentsDirectory(filename: filename).path
         if FileManager.default.fileExists(atPath: path) {
             if let data = FileManager.default.contents(atPath: path) {
                 do {
-                    quiz = try PropertyListDecoder().decode([Quizzes].self, from: data)
+                    quiz = try PropertyListDecoder().decode([QuizCollection].self, from: data)
                 } catch {
                     print("property list decoding error: \(error)")
                 }
@@ -32,7 +32,7 @@ final class QuizDataManager {
         return quiz
     }
     
-    static public func saveToDocumentDirectory(savedQuiz: Quizzes) -> (success: Bool, error: Error?) {
+    static public func saveToDocumentDirectory(savedQuiz: QuizCollection) -> (success: Bool, error: Error?) {
         var newQuiz = fetchNewQuizFromDocumentsDirectory()
         newQuiz.append(savedQuiz)
         let path = DataPersistenceManager.filepathToDocumentsDirectory(filename: filename)

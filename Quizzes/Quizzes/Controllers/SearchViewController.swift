@@ -9,22 +9,51 @@
 import UIKit
 
 class SearchViewController: UIViewController {
+    let searchView = SearchView()
+    var quizInfo = [QuizCollection](){
+        didSet {
+            DispatchQueue.main.async {
+                self.searchView.searchCollectionView.reloadData()
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = .blue
+        self.view.addSubview(searchView)
+        self.searchView.searchCollectionView.dataSource = self
+        self.searchView.searchCollectionView.delegate = self
+        allQuizzes()
+        
 
-        // Do any additional setup after loading the view.
+    }
+    func allQuizzes() {
+        
+        QuizAPIClient.getQuiz { (appError, quiz) in
+            if let appError = appError {
+                print(appError.errorMessage())
+            } else if let quiz = quiz {
+                self.quizInfo = quiz
+                dump(self.quizInfo)
+                }
+                
+            }
+        }
+    }
+
+extension SearchViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+       return quizInfo.count
+            //quizInfo.count
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchQuizViewCell", for: indexPath) as? SearchQuizViewCell else { return UICollectionViewCell() }
+       let quiz = quizInfo[indexPath.row]
+        cell.quizText.text = quiz.quizTitle
+        return cell
     }
-    */
-
+    
+    
 }

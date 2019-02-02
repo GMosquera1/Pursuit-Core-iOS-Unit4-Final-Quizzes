@@ -10,21 +10,23 @@ import UIKit
 
 class QuizViewController: UIViewController {
 
+    @IBOutlet weak var quizCV: UICollectionView!
+    
+    
+//    public var multipleQuizzes = [Quizzes]() {
+//        didSet {
+//            quizCV.reloadData()
+//        }
+//    }
+//
     override func viewDidLoad() {
         super.viewDidLoad()
-
-      
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
+
+//extension QuizViewController: UICollectionViewDataSource {
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return 7
+//    }
+//    
+//}

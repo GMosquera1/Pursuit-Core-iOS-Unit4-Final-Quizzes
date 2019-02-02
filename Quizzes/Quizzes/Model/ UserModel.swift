@@ -1,5 +1,5 @@
 //
-//  QuizModel.swift
+//   UserModel.swift
 //  Quizzes
 //
 //  Created by Genesis Mosquera on 2/1/19.
@@ -8,9 +8,9 @@
 
 import Foundation
 
-struct QuizCollection: Codable {
-    let id: String
-    let quizTitle: String
-    let facts: [String]
-}
+struct UserModel: Codable {
+    let imageData: Data
+    let userName: String
+    let createdAt: String
 
+}

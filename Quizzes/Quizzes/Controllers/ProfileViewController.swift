@@ -9,19 +9,32 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
+    
+    public var userImage: UserModel!
 
     @IBOutlet weak var addImageButton: UIButton!
     
     @IBOutlet weak var addNameButton: UIButton!
     
     
+    @IBOutlet weak var profileButton: UITabBarItem!
+    
+    private var imagePickerViewController: UIImagePickerController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
+        updateUI()
+      // tabBarController.delegate = self
         
     }
+    
+    private func updateUI() {
+        if let user = userImage {
+            self.addImageButton.imageView?.image = UIImage.init(data: user.imageData)
+            
+        }
+    }
+
     
     @IBAction func imageButtonPressed(_ sender: UIButton) {
          let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
@@ -35,6 +48,10 @@ class ProfileViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
         
     }
-    
 
 }
+//extension ProfileViewController: UITabBarController, UITabBarDelegate {
+//    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+//        print("test")
+//    }
+//}
