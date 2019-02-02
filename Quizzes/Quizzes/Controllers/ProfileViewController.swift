@@ -24,6 +24,8 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUI()
+        addImageButton.layer.cornerRadius  = addImageButton.frame.width / 2
+        addImageButton.clipsToBounds = true
       // tabBarController.delegate = self
         
     }
