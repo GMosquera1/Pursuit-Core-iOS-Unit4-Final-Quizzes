@@ -16,8 +16,13 @@ class ProfileViewController: UIViewController {
     
     @IBOutlet weak var addNameButton: UIButton!
     
-    
     @IBOutlet weak var profileButton: UITabBarItem!
+    
+    private var defaultLogin = "" {
+        didSet {
+            
+        }
+    }
     
     private var imagePickerViewController: UIImagePickerController!
     
@@ -29,7 +34,21 @@ class ProfileViewController: UIViewController {
       // tabBarController.delegate = self
         
     }
+ 
+    private func updateUserInfo() {
+        let alertController = UIAlertController(title: "Please Enter Your Username", message: "No spaces allowed or special characters", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        let submitAction = UIAlertAction(title: "Submit", style: .default)
+       
+            return
+        }
+        
     
+    
+//    private func viewDidAppear(_ animated: Bool) {
+//        UITabBarItem*helpButton = [[UIBarBarButtonItem alloc] initWithTitle:@"Help" style:UIBarButtonItemStylePlain target:self action:@selector(helpButtonPressed))];
+//        self.tabBarController.navigationItem.rightBarButtonItem=helpButton;
+//    }
     private func updateUI() {
         if let user = userImage {
             self.addImageButton.imageView?.image = UIImage.init(data: user.imageData)
@@ -37,6 +56,7 @@ class ProfileViewController: UIViewController {
         }
     }
 
+    
     
     @IBAction func imageButtonPressed(_ sender: UIButton) {
          let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
@@ -49,6 +69,15 @@ class ProfileViewController: UIViewController {
         
         self.present(alert, animated: true, completion: nil)
         
+    }
+    
+    @objc
+    func tabBarController(_ tabBarController: UITabBarController,
+                          didSelect viewController: UIViewController) {
+        
+        if tabBarController.selectedIndex == 0  {
+            viewController.viewDidLoad()
+        }
     }
 
 }
