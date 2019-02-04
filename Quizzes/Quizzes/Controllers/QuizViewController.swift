@@ -13,14 +13,9 @@ class QuizViewController: UIViewController {
     @IBOutlet weak var quizCV: UICollectionView!
     
     
-//    public var multipleQuizzes = [Quizzes]() {
-//        didSet {
-//            quizCV.reloadData()
-//        }
-//    }
-//
     override func viewDidLoad() {
         super.viewDidLoad()
+print(DataPersistenceManager.documentsDirectory())
     }
 }
 

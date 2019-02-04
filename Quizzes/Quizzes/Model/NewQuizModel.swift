@@ -9,12 +9,27 @@
 import Foundation
 
 struct NewQuiz: Codable {
-    let user: String
     let quizTitle: String
-    let favoritedAt: String
+    let fact1: String
+    let fact2: String
+    let createdAt: String
+    public var dateFormattedString: String {
+        let isoDateFormatter = ISO8601DateFormatter()
+        var formattedDate = createdAt
+        if let date = isoDateFormatter.date(from: createdAt) {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MMMM d, yyyy hh:mm a"
+            formattedDate = dateFormatter.string(from: date)
+        }
+        return formattedDate
+    }
     
     public var date: Date {
-        let date = favoritedAt.date()
-        return date 
+        let isoDateFormatter = ISO8601DateFormatter()
+        var formattedDate = Date()
+        if let date = isoDateFormatter.date(from: createdAt) {
+            formattedDate = date
+        }
+        return formattedDate
     }
 }

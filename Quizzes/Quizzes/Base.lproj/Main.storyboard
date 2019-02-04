@@ -140,28 +140,36 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="64"/>
                                 <items>
                                     <navigationItem title="Create a Quiz" id="XNy-D8-y15">
-                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="TGV-Gh-yZx"/>
-                                        <barButtonItem key="rightBarButtonItem" title="Create" id="QZl-ZK-IgH"/>
+                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="TGV-Gh-yZx">
+                                            <connections>
+                                                <action selector="cancelPressed:" destination="QVG-Rm-t4L" id="55K-aM-bwp"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Create" id="QZl-ZK-IgH">
+                                            <connections>
+                                                <action selector="createdPressed:" destination="QVG-Rm-t4L" id="4Sp-oB-bKG"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="vA7-jE-deo">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text=" Enter first quiz fact" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="vA7-jE-deo">
                                 <rect key="frame" x="11" y="125" width="353" height="125"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="125" id="Fvt-9f-f7N"/>
                                 </constraints>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="6qe-sv-YCY">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Enter the second quiz fact " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="6qe-sv-YCY">
                                 <rect key="frame" x="11" y="261" width="353" height="125"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="125" id="krZ-5w-OtL"/>
                                 </constraints>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -186,6 +194,11 @@
                         <viewLayoutGuide key="safeArea" id="N8c-zn-O81"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Create" image="icons8-create-25" id="LBT-cN-cKG"/>
+                    <connections>
+                        <outlet property="quizFact1" destination="vA7-jE-deo" id="H0K-st-Qnf"/>
+                        <outlet property="quizFact2" destination="6qe-sv-YCY" id="HFW-l4-nuw"/>
+                        <outlet property="quizTitle" destination="iNt-jz-3rO" id="CfA-hC-amr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EFA-ga-eO2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
