@@ -9,6 +9,16 @@
 import UIKit
 
 class QuizViewController: UIViewController {
+    
+    let quizView = QuizVIew()
+    
+    var quizInfo = [QuizCollection](){
+        didSet {
+            DispatchQueue.main.async {
+//self.quizView.quizCollectionView.reloadData()
+            }
+        }
+    }
 
     @IBOutlet weak var quizCV: UICollectionView!
     

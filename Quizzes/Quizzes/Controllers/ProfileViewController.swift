@@ -31,18 +31,43 @@ class ProfileViewController: UIViewController {
         updateUI()
         addImageButton.layer.cornerRadius  = addImageButton.frame.width / 2
         addImageButton.clipsToBounds = true
+        setupImagePickerViewController()
+        //showImagePickerController()
+       // imagePickerViewController.delegate =
       // tabBarController.delegate = self
         
     }
+//    private func showImagePickerController() {
+//        present(imagePickerViewController, animated: true, completion: nil)
+//    }
+    
+    private func nameAlert (title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction.init(title: "Cancel", style: .default, handler: { (action) in
+            alert.dismiss(animated: true, completion: nil)
+            print("Cancel")
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    private func setupImagePickerViewController() {
+        imagePickerViewController = UIImagePickerController()
+        imagePickerViewController.delegate = self
+        if !UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            profileButton.isEnabled = false
+        }
+        
+    }
+
  
     private func updateUserInfo() {
         let alertController = UIAlertController(title: "Please Enter Your Username", message: "No spaces allowed or special characters", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         let submitAction = UIAlertAction(title: "Submit", style: .default)
-       
+
             return
         }
-        
+    
     
     
 //    private func viewDidAppear(_ animated: Bool) {
@@ -61,12 +86,16 @@ class ProfileViewController: UIViewController {
     @IBAction func imageButtonPressed(_ sender: UIButton) {
          let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { (_) in
-            print("User clicked 'Share' button")
+            self.imagePickerViewController.sourceType = .photoLibrary
+            self.setupImagePickerViewController()
+            //showImagePickerController()
+            self.present(self.imagePickerViewController, animated: true, completion: nil)
+            print("User clicked 'PhotoLibrary' button")
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in
             print("User clicked 'Cancel' button")
         }))
-        
+
         self.present(alert, animated: true, completion: nil)
         
     }
@@ -86,3 +115,19 @@ class ProfileViewController: UIViewController {
 //        print("test")
 //    }
 //}
+
+extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            //self.addImageButton.imageView?.image = image
+            addImageButton.setImage(image, for: .normal)
+            
+            
+        }
+        dismiss(animated: true, completion: nil)
+    }
+}
