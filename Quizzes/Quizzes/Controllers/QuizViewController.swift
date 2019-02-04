@@ -24,6 +24,12 @@ class QuizViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         quizView.quizCollectionView.reloadData()
     }
+    @objc func deleteQuiz(sender: UIButton) {
+        deleteButton()
+        
+        
+    }
+    
     
     @IBOutlet weak var quizCV: UICollectionView!
     
@@ -31,6 +37,7 @@ class QuizViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.addSubview(quizView)
+
         self.quizView.quizCollectionView.dataSource = self
         self.quizView.quizCollectionView.delegate = self
         allQuizzes()
@@ -48,6 +55,20 @@ class QuizViewController: UIViewController {
             
         }
     }
+    
+    private func deleteButton() {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (_) in
+            //showImagePickerController()
+            print("User clicked 'PhotoLibrary' button")
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in
+            print("User clicked 'Cancel' button")
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+        
+    }
 }
 
 
@@ -61,6 +82,8 @@ extension QuizViewController: UICollectionViewDataSource, UICollectionViewDelega
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "QuizViewCell", for: indexPath) as? QuizViewCell else { return UICollectionViewCell() }
         let quiz = CreateModel.getQuiz()[indexPath.row]
         cell.quizText.text = quiz.quizTitle
+        cell.flipButton.addTarget(self, action: #selector(deleteQuiz), for: .touchUpInside)
+        cell.flipButton.tag = indexPath.row
         return cell
     }
     

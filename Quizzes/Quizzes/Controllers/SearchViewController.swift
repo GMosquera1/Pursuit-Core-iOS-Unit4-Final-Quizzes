@@ -28,6 +28,8 @@ class SearchViewController: UIViewController {
         
 
     }
+    
+ 
     func allQuizzes() {
         
         QuizAPIClient.getQuiz { (appError, quiz) in
@@ -40,6 +42,27 @@ class SearchViewController: UIViewController {
                 
             }
         }
+    
+    private func addQuizButton() {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (_) in
+            //showImagePickerController()
+            print("User clicked 'PhotoLibrary' button")
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in
+            print("User clicked 'Cancel' button")
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+        
+    }
+
+    
+    
+    func addedAlert(message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+    }
     }
 
 extension SearchViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
